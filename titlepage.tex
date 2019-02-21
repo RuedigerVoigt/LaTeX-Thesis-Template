@@ -1,0 +1,26 @@
+% The titlepage-environment is special. It shows no page
+% number and the counter is set in a way, that the next 
+% page starts as 1.
+\begin{titlepage}
+% Normally \meaketitle inserts a pagebreak after the title.
+% This makes sense, but in the draft phase I want avoid that.
+% So instead of just witing \maketitle, I suppress that behavior
+% by using the following line:
+{\let\newpage\relax\maketitle}
+\ \\
+\vfill % fill vertical space and push the paragraph below 
+% down the page
+%
+\ \\
+% who wrote this thesis? ...
+\foreignlanguage{ngerman}{Rüdiger Voigt, M.A.}\\
+Student-ID\\
+Address\\
+Mail / Phone\\
+\url{https://www.ruediger-voigt.eu/}\\
+\ \\
+% Who is the advisor? ...
+Advisor: \foreignlanguage{ngerman}{Professor Dr. X}\\
+Chair of \dots\\
+University of Cologne\\
+\end{titlepage}

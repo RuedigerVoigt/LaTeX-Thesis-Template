@@ -1,0 +1,151 @@
+\documentclass[10pt, oneside]{book}
+% The option oneside avoids empty pages in drafts, but 
+% should be removed in production.
+
+% check if the editor's file encoding is set accordingly:
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% All languages here are available, but the one named last
+% will be loaded as default for this document. So if you want
+% to use another of these languages, you have to switch.
+\usepackage[french,ngerman,english]{babel}
+
+% Classic LaTeX would use the \hyphenation{} command.
+% Since babel 3.9a (introduced 2017, but might require an update
+% depending on your distribution) this can be language specific.
+\babelhyphenation[english]{}
+\babelhyphenation[ngerman]{}
+
+% Change left/right to inner/outer once you turn of
+% the oneside option!
+\usepackage[a4paper,
+left = 2.5cm,
+right = 6cm, % more space for handwritten notes
+top=2.5cm,
+bottom=2.5cm]{geometry}
+
+\usepackage{setspace} % line-spacing
+
+% select a font:
+% (should be a serif type as it is a long text)
+%\usepackage{lmodern}
+\usepackage{palatino}
+
+
+
+\usepackage{fancyhdr}
+
+
+% MATH
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{mathtools}
+
+% TABLES
+\usepackage{booktabs} % better looking tables
+\usepackage{longtable} % multi-page tables
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{dcolumn} % align column on a delimiter
+\usepackage{tabularx}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\usepackage{microtype}
+
+
+\usepackage[
+labelfont=bf,
+format=hang,
+labelsep=colon,
+justification=justified,
+position=bottom,
+figurename=Fig.,
+tablename=Tab.]{caption}
+
+
+
+% The ulem package makes it possible to underline 
+% or strike out text. The option `normalem' avoids 
+% redefinition of \emph{}.
+\usepackage[normalem]{ulem}
+
+% csquotes introduces the \enquote{} command, which
+% sets quotation marks matching the current language.
+\usepackage[autostyle=true]{csquotes}
+
+% Changing the footnote style:
+\usepackage[marginal]{footmisc}
+
+
+\usepackage{float}
+
+
+% Used in this example to generate sample texts.
+\usepackage{blindtext}
+
+
+\usepackage[backend = biber, % because we use utf8 encoding
+style=authoryear, % cite with last name author(s) and year
+sorting = nyt % how to sort the bibliography
+]{biblatex}
+\addbibresource{example-literature.bib}
+
+\usepackage{makeidx}
+\makeindex
+
+% In case we want to show computer code:
+\usepackage{listings}
+
+
+% Hyperrefs allows internal and external links.
+% Also it has many options to set parameters of a PDF file.
+\usepackage{hyperref}
+\hypersetup{
+colorlinks = false, 
+hidelinks = true, % no boxes around links
+bookmarksopen = true,
+pdftitle = 'Thesis Example',
+pdfauthor = 'Rüdiger Voigt', 
+pdfsubject = 'doctoral thesis'}
+
+
+% The command \today is changed to the current date 
+% every time the document gets recompiled.
+% A good way to keep track of the version.
+\title{A Thesis Template written in \LaTeX}
+\author{\foreignlanguage{ngerman}{Rüdiger Voigt, M.A.}}
+\date{DRAFT VERSION \today}
+
+\begin{document}
+
+
+\input{titlepage}
+% include instead of input inserts a pagebreak.
+\include{statement}
+\frontmatter
+\tableofcontents
+\listoffigures
+\listoftables
+
+% switch page to arabic numbers for pages
+\mainmatter
+% change linespacing via the linespace package:
+\onehalfspacing 
+% contents divided into multiple files
+\input{introduction}
+\input{analysis}
+\input{conclusion}
+
+\appendix
+% Chapters (...) get letters instead of numbers.
+\chapter{Proof of the Main Result}
+
+\backmatter
+\printindex
+\printbibliography
+
+\end{document}
