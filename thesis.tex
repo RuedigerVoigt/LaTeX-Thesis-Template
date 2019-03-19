@@ -14,7 +14,8 @@
 
 % Classic LaTeX would use the \hyphenation{} command.
 % Since babel 3.9a (introduced 2017, but might require an update
-% depending on your distribution) this can be language specific.
+% depending on your distribution) hyphenation can be 
+% specified language specific.
 \babelhyphenation[english]{}
 \babelhyphenation[ngerman]{}
 
@@ -39,7 +40,7 @@ bottom=2.5cm]{geometry}
 
 
 % MATH
-\usepackage{amsmath}
+\usepackage{amsmath} % the basic package for all things math
 \usepackage{amssymb}
 \usepackage{cancel}
 \usepackage{mathtools}
@@ -52,12 +53,13 @@ bottom=2.5cm]{geometry}
 \usepackage{dcolumn} % align column on a delimiter
 \usepackage{tabularx}
 
-\usepackage{graphicx}
+\usepackage{graphicx} % Provides \includegraphics{}
 \usepackage{tikz}
 
 \usepackage{microtype}
 
 
+% Format the caption 
 \usepackage[
 labelfont=bf,
 format=hang,
@@ -97,6 +99,11 @@ sorting = nyt % how to sort the bibliography
 
 \usepackage{makeidx}
 \makeindex
+
+% to show index entries on the page margin:
+\usepackage{showidx}
+
+
 
 % In case we want to show computer code:
 \usepackage{listings}
