@@ -1,21 +1,36 @@
 % !TEX encoding = UTF-8 Unicode
 \documentclass[10pt, oneside]{book}
-% The option oneside avoids empty pages in drafts, but 
-% should be removed in production.
+% * The documentclass book is a good choice for thesis. For
+%   a short text like a course homework the documentclass
+%   article would be more suitable.
+% * The fontsize specified here is the base text font size 
+%   for the document. Headings, footnotes, and other text
+%   are automatically scaled relative to that. Typically the
+%   documentclass sets a maximum.
+% * The option oneside avoids empty pages in drafts, but 
+%   should be removed in production: Readers expect chapters
+%   to start at the right side. / ... => Do NOT forget
+%   to turn on the options inner/outer for geometry after
+%   removing oneside!
+% 
 
 % check if the editor's file encoding is set accordingly:
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-% All languages here are available, but the one named last
-% will be loaded as default for this document. So if you want
-% to use another of these languages, you have to switch.
+% * All languages here are available, but the one named last
+%   will be loaded as default for this document.
+% * So if you want to use another of these languages as default,
+%   you have to switch the order. As a result headers et cetera 
+%   will change.
+% * ngerman is German with new spelling.
 \usepackage[french,ngerman,english]{babel}
 
 % Classic LaTeX would use the \hyphenation{} command.
-% Since babel 3.9a (introduced 2017, but might require an update
-% depending on your distribution) hyphenation can be 
-% specified language specific.
+% Since babel 3.9a* hyphenation can be specified 
+% language specific.
+% * = introduced 2017, but might require an update
+%     depending on your distribution
 \babelhyphenation[english]{}
 \babelhyphenation[ngerman]{}
 
@@ -27,10 +42,14 @@ right = 6cm, % more space for handwritten notes
 top=2.5cm,
 bottom=2.5cm]{geometry}
 
-\usepackage{setspace} % line-spacing
+% Load Options for line spacing. The change in 
+% spacing is activated later in the document itself.
+% For example with \onehalfspacing.
+\usepackage{setspace}
 
-% select a font:
-% (should be a serif type as it is a long text)
+% Select a font:
+% * That should be a serif type as it is a long text 
+%   and serif is better to read than non-serif.
 %\usepackage{lmodern}
 \usepackage{palatino}
 
@@ -40,19 +59,21 @@ bottom=2.5cm]{geometry}
 
 
 % MATH
-\usepackage{amsmath} % the basic package for all things math
+% * You always need amsmath and amssymb.
+\usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{cancel}
+\usepackage{cancel} % allows to strike out terms
 \usepackage{mathtools}
 
 % TABLES
 \usepackage{booktabs} % better looking tables
 \usepackage{longtable} % multi-page tables
-\usepackage{multirow}
+\usepackage{multirow} % join rows
 \usepackage{array}
 \usepackage{dcolumn} % align column on a delimiter
 \usepackage{tabularx}
 
+% GRAPHICS
 \usepackage{graphicx} % Provides \includegraphics{}
 \usepackage{tikz}
 
@@ -87,7 +108,7 @@ tablename=Tab.]{caption}
 \usepackage{float}
 
 
-% Used in this example to generate sample texts.
+% Used in this template to generate sample texts.
 \usepackage{blindtext}
 
 
@@ -97,20 +118,29 @@ sorting = nyt % how to sort the bibliography
 ]{biblatex}
 \addbibresource{example-literature.bib}
 
+
+% INDEX
 \usepackage{makeidx}
 \makeindex
 
-% to show index entries on the page margin:
+% To show index entries on the page margin use the 
+% showidx package. In a draft this is helpful, but 
+% before release the package should be removed.
 \usepackage{showidx}
 
 
-
-% In case we want to show computer code:
+% In case we want to show computer code, listings can
+% format code in multiple languages.
 \usepackage{listings}
 
 
-% Hyperrefs allows internal and external links.
-% Also it has many options to set parameters of a PDF file.
+% * Hyperrefs allows internal and external links.
+% * Once loaded all entries in the table of contents,
+%   footnotes, references, ... become hyperlinks in PDF. 
+% * Also it has many options to set parameters of 
+%   a PDF file.
+% * Most of the time it has to be the last package
+%   loaded in the preamble.
 \usepackage{hyperref}
 \hypersetup{
 colorlinks = false, 
@@ -139,7 +169,9 @@ pdfsubject = 'doctoral thesis'}
 \listoffigures
 \listoftables
 
-% switch page to arabic numbers for pages
+% \mainmatter switches to arabic numbers for pages.
+% It also restart the page counter so content starts
+% at page 1.
 \mainmatter
 % change linespacing via the linespace package:
 \onehalfspacing 
