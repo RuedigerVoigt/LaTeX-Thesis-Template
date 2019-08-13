@@ -1,7 +1,12 @@
-pdFlatex thesis.tex
+:: Windows batch file to compile
+:: the document
+
+pdflatex thesis.tex
 makeindex thesis.tex
-biber thesis.text
+:: note: the following call to biber is without file ending!
+biber thesis
 makeglossaries thesis
+pdflatex thesis.tex
 pdflatex thesis.tex
 
 pause
