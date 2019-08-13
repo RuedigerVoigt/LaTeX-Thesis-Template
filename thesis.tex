@@ -1,5 +1,5 @@
 % !TEX encoding = UTF-8 Unicode
-\documentclass[10pt, oneside]{book}
+\documentclass[11pt, oneside]{book}
 % * The documentclass book is a good choice for thesis. For
 %   a short text like a course homework the documentclass
 %   article would be more suitable.
@@ -34,6 +34,11 @@
 \babelhyphenation[english]{}
 \babelhyphenation[ngerman]{}
 
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START: CHANGE BEFORE PRODUCTION
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Change left/right to inner/outer once you turn of
 % the oneside option!
 \usepackage[a4paper,
@@ -41,6 +46,33 @@ left = 2.5cm,
 right = 6cm, % more space for handwritten notes
 top=2.5cm,
 bottom=2.5cm]{geometry}
+
+% more options to print out time
+% BEWARE: it is datetime2 not datetime, which is outdated.
+% provides the \DTMnow command
+\usepackage[showzone=False]{datetime2}
+
+\usepackage{background}
+\backgroundsetup{
+	position=current page.west,
+	angle=90,
+	vshift=-10mm,
+	color=gray,
+	opacity=1,
+	scale=1,
+	contents={\emph{DRAFT \DTMnow}}
+}
+
+% showidx has to be turned off, too.
+% It had to be loaded after makeidx, so see below.
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END: CHANGE BEFORE PRODUCTION
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{parskip}
+
 
 % Load Options for line spacing. The change in 
 % spacing is activated later in the document itself.
@@ -52,10 +84,6 @@ bottom=2.5cm]{geometry}
 %   and serif is better to read than non-serif.
 %\usepackage{lmodern}
 \usepackage{palatino}
-
-
-
-\usepackage{fancyhdr}
 
 
 % MATH
@@ -144,11 +172,12 @@ sorting = nyt % how to sort the bibliography
 \usepackage{hyperref}
 \hypersetup{
 colorlinks = false, 
-hidelinks = true, % no boxes around links
+hidelinks, % no boxes around links
 bookmarksopen = true,
-pdftitle = 'Thesis Example',
-pdfauthor = 'Rüdiger Voigt', 
-pdfsubject = 'doctoral thesis'}
+pdftitle = {Thesis Example},
+pdfauthor = {Rüdiger Voigt}, 
+pdfsubject = {doctoral thesis}
+}
 
 
 % The command \today is changed to the current date 
@@ -186,6 +215,10 @@ pdfsubject = 'doctoral thesis'}
 
 \backmatter
 \printindex
-\printbibliography
+
+% print the bibliography here
+% optional: add it to the table of contents
+% optional: customize the title
+\printbibliography[heading=bibintoc,title={Bibliography}]
 
 \end{document}
